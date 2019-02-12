@@ -52,16 +52,19 @@ public class Cliente implements Serializable {
 	private String foto;
 
 	/*
+	 * mappedBy="cliente", es el atributo de la relación , en este caso se encuentra
+	 * en la clase Factura.
+	 * 
 	 * fetch=FetchType.LAZY, es la busqueda perezosa de hibernate, lo cual no va a
-	 * traer las relaciones de la clase entity consultada. Es la predeterminada
+	 * traer las relaciones de la clase entity consultada. Es la predeterminada.
 	 * 
 	 * fetch=FetchType.EAGER, es la contraria, trae todas las relaciones de la
-	 * entidad consultada
+	 * entidad consultada.
 	 * 
 	 * cascade=CascadeType.ALL, Al persistir una entidad, también persisten las
-	 * entidades mantenidas en este campo
+	 * entidades mantenidas en este campo.
 	 */
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Factura> facturas;
 
 	public Cliente() {
