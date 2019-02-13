@@ -32,12 +32,13 @@ public class Factura implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String direccion;
+	private String descripcion;
 	private String observacion;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "create_at")
 	private Date createAt;
 
+	
 	/*
 	 * fetch=FetchType.LAZY, es la busqueda perezosa de hibernate, lo cual no va a
 	 * traer las relaciones de la clase entity consultada. Es la predeterminada
@@ -61,7 +62,7 @@ public class Factura implements Serializable {
 	 */
 	
 	public Factura() {
-	this.items= new ArrayList<>();
+	this.items= new ArrayList<ItemFactura>();
 	}
 	@PrePersist
 	public void prePersist() {
@@ -76,12 +77,12 @@ public class Factura implements Serializable {
 		this.id = id;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public String getObservacion() {
@@ -119,12 +120,16 @@ public class Factura implements Serializable {
 		items.add(item);
 	}
 	
-	public double getTtotal() {
-		double total=0;
-		int size=items.size();
+	public Double getTotal() {
+		Double total = 0.0;
+
+		int size = items.size();
+
 		for (int i = 0; i < size; i++) {
-			total+=items.get(i).calcularImporte();
+			total += items.get(i).calcularImporte();
 		}
 		return total;
 	}
+	
+	
 }

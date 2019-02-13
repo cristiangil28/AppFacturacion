@@ -20,6 +20,31 @@
 				<li class="list-group-item" th:text="${cliente.createAt}"></li>
 
 			</ul>
+			<div th:if="${#lists.isEmpty(cliente.facturas)}"class="alert alert-info my-4"
+				th:text="'no hay facturas asociadas para el cliente:' + ''+${cliente.nombre}"></div>
+			<table th:if="${not #lists.isEmpty(cliente.facturas)}" class="table table-bordered table-spriped my-4">
+				
+				<thead class="thead-inverse">
+				<tr>
+				<th>folio</th>
+					<th>descripcion</th>
+					<th>fecha</th>
+					<th>total</th>
+				
+				</tr>
+				</thead>
+					<tbody>
+					
+					<tr th:each="factura: ${cliente.facturas}">
+					<th th:text="${factura.id}"></th>
+					<th th:text="${factura.descripcion}"></th>
+					<th th:text="${factura.createAt}"></th>
+					<th th:text="${factura.total}"></th>
+					
+					</tr>
+					
+					</tbody>
+			</table>
 		</div>
 	</div>
 </body>

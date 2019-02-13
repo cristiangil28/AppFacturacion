@@ -67,8 +67,10 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Factura> facturas;
 
+	
+
 	public Cliente() {
-		facturas = new ArrayList<>();
+		facturas= new ArrayList<Factura>();
 	}
 
 	public Long getId() {
@@ -129,6 +131,14 @@ public class Cliente implements Serializable {
 
 	public void addfactura(Factura factura) {
 		facturas.add(factura);
+	}
+
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
 	}
 
 }
