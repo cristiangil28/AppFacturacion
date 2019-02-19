@@ -45,7 +45,8 @@
 					return false;
 				}
 			});
-			
+			//esta funcion permite borrar los datos del autocomplete, para que cuando sea llamado el evento submit 
+			//no se envie el id y cree un error
 			$("form").submit(function(){
 				$("#plantillaItemsFactura").remove();
 				return;
