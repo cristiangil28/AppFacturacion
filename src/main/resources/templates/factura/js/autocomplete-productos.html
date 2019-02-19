@@ -81,7 +81,7 @@
 			},
 			calcularGranTotal: function(){
 				var total = 0;
-				
+				//expresion regular que busca en todos los span, el id que contenga total importe
 				$('span[id^="total_importe_"]').each(function(){
 					total += parseInt($(this).html());
 				});
