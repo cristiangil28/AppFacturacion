@@ -25,7 +25,7 @@ public class Producto implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long Id;
 	
-	private String Nombre;
+	private String nombre;
 	private double precio;
 	@Temporal(TemporalType.DATE)
 	@Column(name="create_at")
@@ -41,11 +41,12 @@ public class Producto implements Serializable{
 	public void setId(Long id) {
 		Id = id;
 	}
+	
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 	public double getPrecio() {
 		return precio;
