@@ -1,10 +1,10 @@
 package com.cristian.models.dao;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.cristian.models.entity.Factura;
 
-public interface IFacturaDao extends PagingAndSortingRepository<Factura, Long> {
+public interface IFacturaDao extends CrudRepository<Factura, Long> {
 
 	
 }
